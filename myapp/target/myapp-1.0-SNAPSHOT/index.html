@@ -1,0 +1,179 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RPG - Dragon Repeller</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="./script.js"></script>
+    </head>
+
+    <body>
+        <div id="game">
+
+        </div>
+
+    </body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gensogram - Book Sales App</title>
+        <!-- Include CSS stylesheets -->
+        <link rel="stylesheet" href="styles.css">
+        <style>
+            /* CSS for navigation bar */
+            nav {
+                background-color: #333;
+                overflow: hidden;
+                width: 100%;
+                /* Set navigation bar to 100% width */
+            }
+
+            nav ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                display: flex;
+                /* Use flexbox */
+                justify-content: space-between;
+                /* Evenly space items */
+            }
+
+            nav ul li {
+                /* float: left; Remove float */
+            }
+
+            nav ul li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+
+            nav ul li a:hover {
+                background-color: #ddd;
+                color: black;
+            }
+
+            /* Additional CSS for centering and padding */
+            body {
+                padding: 20px;
+                /* Add padding to body */
+                display: flex;
+                justify-content: center;
+                /* Center content horizontally */
+                align-items: center;
+                /* Center content vertically */
+                min-height: 100vh;
+                /* Ensure full height of viewport */
+                margin: 0;
+                /* Remove default margin */
+                flex-direction: column;
+                /* Arrange items vertically */
+                background-color: skyblue;
+                /* Set background color */
+            }
+
+            main {
+                width: 80%;
+                /* Set width of main content */
+                max-width: 800px;
+                /* Set maximum width */
+                text-align: center;
+                /* Center align content */
+            }
+
+            header {
+                text-align: center;
+                /* Center align content */
+            }
+
+            .logo img {
+                max-width: 150px;
+                /* Set maximum width for logo */
+                margin-bottom: 10px;
+                /* Add margin bottom for spacing */
+            }
+
+            #shipping-method {
+                width: 100%;
+                /* Set select element to 100% width */
+                margin-bottom: 10px;
+                /* Add margin bottom for spacing */
+                text-align: center;
+                /* Center align dropdown menu */
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="./Gensogram1 logo-resized.png" alt="Gensogram Logo">
+                <h1>Welcome to Gensogram</h1>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="#shipping">Shipping</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#order">Order</a></li>
+                <li><a href="#count">Count</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="shipping">
+                <h2>Shipping Service</h2>
+                <p>Select your shipping method:</p>
+                <select id="shipping-method">
+                    <option value="DHL">DHL - Express</option>
+                    <option value="Fedex">Fedex - Fast Shipping</option>
+                    <option value="CanadaPost">CanadaPost - Standard</option>
+                </select>
+                <p>Enter your shipping address:</p>
+                <input type="text" id="shipping-address" placeholder="Enter your address...">
+            </section>
+
+            <section id="cart">
+                <h2>Shopping Cart</h2>
+                <select id="cart-items">
+                    <option value="">Select a book</option>
+                    <option value="Harry Potter">Harry Potter</option>
+                    <option value="Things Fall Apart">Things Fall Apart</option>
+                    <option value="Half of a Yellow Sun">Half of a Yellow Sun</option>
+                </select>
+            </section>
+
+
+            <section id="order">
+                <h2>Place Order</h2>
+                <button id="decrement">-</button>
+                <input type="text" id="quantity" value="1">
+                <button id="increment">+</button>
+                <a href="billing.html" id="checkout">Checkout</a>
+            </section>
+
+
+            <section id="count">
+                <h2>Count Service</h2>
+                <p>Count the number of books available:</p>
+                <!-- Count service form goes here -->
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Gensogram - Book Sales App</p>
+        </footer>
+    </body>
+
+</html>
