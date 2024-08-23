@@ -2,8 +2,7 @@ version: "3"
 services:
   cadvisor:
     container_name: cadvisor
-    image: google/cadvisor:latest
-    network_mode: "host"
+    image: gcr.io/cadvisor/cadvisor:latest
     ports:
       - "8080:8080"
     volumes: 
@@ -19,7 +18,6 @@ services:
   prometheus:
     container_name: prometheus
     image: prom/prometheus:latest
-    network_mode: "host"
     ports:
       - "9090:9090"
     volumes:
@@ -29,39 +27,41 @@ services:
       - cadvisor
     
   node-exporter:
-    image: prom/node-exporter:latest 
-    container_name: node-exporter 
+    image: prom/node-exporter:latest
+    container_name: node-exporter
     deploy:
       mode: global
-    restart: unless-stopped 
+    restart: unless-stopped
     ports:
-    - 9100:9100
+      - "9100:9100"
     volumes:
-    - /proc:/host/proc:ro
-    - /sys:/host/sys:ro
-    - /:/rootfs:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
     command:
-    - '--path.procfs=/host/proc'
-    - '--path.sysfs=/host/sys'
-    - --collector.filesystem.ignored-mount-points
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
       
   grafana:
     container_name: grafana
     image: grafana/grafana:latest
-    network_mode: "host"
     ports:
       - "3000:3000"
     environment:
       - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
       - DS_PROMETHEUS=prometheus
-    volumes: 
-      - "grafana-data:/var/lib/grafana"
-      - "./datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml"
-      - "./dashboard.json:/var/lib/grafana/dashboards/dashboard.json"
-      - "./default.yaml:/etc/grafana/provisioning/dashboards/default.yaml"
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - grafana-config:/etc/grafana/provisioning
+      - grafana-dashboards:/var/lib/grafana/dashboards
     privileged: true
     depends_on:
       - prometheus
 
 volumes:
   grafana-data:
+  grafana-config:
+  grafana-dashboards:
+
+
