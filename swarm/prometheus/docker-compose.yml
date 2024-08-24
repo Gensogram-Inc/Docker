@@ -30,7 +30,7 @@ services:
     container_name: pushgateway
     image: prom/pushgateway:latest
     ports:
-      - "9092:9092"
+      - "9092:9091"
 
   node-exporter:
     image: prom/node-exporter:latest
