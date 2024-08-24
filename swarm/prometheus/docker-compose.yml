@@ -21,11 +21,17 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - "./prometheus.yml:/etc/prometheus/prometheus.yml"
+      - "/home/ubuntu/Docker/swarm/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml"
     privileged: true
     depends_on:
       - cadvisor
-    
+
+  pushgateway:
+    container_name: pushgateway
+    image: prom/pushgateway:latest
+    ports:
+      - "9092:9092"
+
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
@@ -55,12 +61,14 @@ services:
       - grafana-data:/var/lib/grafana
       - grafana-config:/etc/grafana/provisioning
       - grafana-dashboards:/var/lib/grafana/dashboards
+      - grafana_plugins:/var/lib/grafana/plugins
     privileged: true
     depends_on:
       - prometheus
 
 volumes:
   grafana-data:
+  grafana_plugins:
   grafana-config:
   grafana-dashboards:
 
